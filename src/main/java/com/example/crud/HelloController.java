@@ -110,6 +110,20 @@ public class HelloController {
         }
     }
 
+    public void signup(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
 
 //    public void Signup(MouseEvent mouseEvent) {
 //        switchScene (mouseEvent,"register-vew.fxml");

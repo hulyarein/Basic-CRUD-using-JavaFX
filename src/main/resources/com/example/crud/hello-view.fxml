@@ -12,21 +12,17 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <Button id="btnLogin" layoutX="325.0" layoutY="210.0" mnemonicParsing="false" onAction="#onLogin" text="Login" />
+      <Button id="btnLogin" layoutX="327.0" layoutY="204.0" mnemonicParsing="false" onAction="#onLogin" text="Login" />
       <TextField id="tfUsername" fx:id="username" layoutX="224.0" layoutY="116.0" />
-      <TextField id="tfPass"  fx:id="password" layoutX="224.0" layoutY="166.0" />
+      <TextField id="tfPass" fx:id="password" layoutX="224.0" layoutY="166.0" />
       <Text layoutX="153.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username: " />
       <Text layoutX="156.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-      <Text layoutX="156.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+      <Text layoutX="153.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
          <font>
             <Font size="10.0" />
          </font>
       </Text>
-<!--      <Text layoutX="265.0" layoutY="227.0" onMouseClicked="#Signup" stroke="#3a34b2" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" underline="true">-->
-<!--         <font>-->
-<!--            <Font size="10.0" />-->
-<!--         </font>-->
-<!--      </Text>-->
+      <Button layoutX="153.0" layoutY="283.0" mnemonicParsing="false" onAction="#signup" text="Sign Up" />
    </children>
 
 </AnchorPane>
