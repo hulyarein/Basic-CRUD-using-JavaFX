@@ -41,7 +41,7 @@ public class HelloController {
             ResultSet res = statement.executeQuery(query);
 
             if (res.next()) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("logged.fxml"));
                 Parent parent = loader.load();
                 Scene scene = new Scene(parent);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
