@@ -1,131 +1,93 @@
 package com.example.crud;
 
-import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
-import javafx.scene.Node;
-import javafx.event.ActionEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class HelloController {
-    @FXML private Label welcomeText;
-    @FXML private TextField username;
-    @FXML private TextField password;
-
-    @FXML private TextField registerusername;
-    @FXML private TextField registerpassword;
-    @FXML private TextField registeremail;
-
-//    @FXML private Label registerStatus;
-//
-//
-//    @FXML
-//    private Label idOfAnyControl;
-
-
 
     @FXML
-    protected void onLogin(ActionEvent event) {
-        try (Connection c = MySQLConnection.getConnection();
-             Statement statement = c.createStatement()) {
+    private Button btnLogin;
 
-            String query = "SELECT * FROM users WHERE name = '" + username.getText() + "' AND password = '" + password.getText() + "'";
-            ResultSet res = statement.executeQuery(query);
+    @FXML
+    private Button btnSignUp;
 
-            if (res.next()) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("logged.fxml"));
-                Parent parent = loader.load();
-                Scene scene = new Scene(parent);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
+    @FXML
+    private TextField txtpassword;
+
+    @FXML
+    private TextField txtusername;
+
+    public static User user;
+
+    @FXML
+    void onLogin(ActionEvent event) {
+        try(
+                Connection c = MySQLConnection.getConnection();
+                Statement s = c.createStatement();
+        ) {
+            String username =  txtusername.getText();
+            String password = txtpassword.getText();
+            String query = "SELECT * FROM tblUser WHERE name = '" + username + "' AND password = '" + password + "'";
+
+            ResultSet resultset = s.executeQuery(query);
+            if (resultset.next() ) {
+
+                int id = s.getResultSet().getInt("userId");
+                String name = s.getResultSet().getString("name");
+                user = new User(id, name);
+
+
+
+                Parent root = FXMLLoader.load(getClass().getResource("logged.fxml"));
+                Scene homepageScene = new Scene(root);
+
+                Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                window.setScene(homepageScene);
+                window.setResizable(false);
+                window.show();
+
             } else {
-                welcomeText.setText("Invalid login, please try again.");
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText("Invalid username or password");
+                a.show();
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
+
+
+
     }
 
-//
-//
-//    private void switchScene(Event event, String fxmlFile) {
-//        try {
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-//            Parent parent = loader.load();
-//            Scene scene = new Scene(parent);
-//            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
-    public void onRegister(ActionEvent event) {
-        String username = registerusername.getText();
-        String password = registerpassword.getText();
-        String email = registeremail.getText();
-
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
-           // registerStatus.setText("Please fill in all fields.");
-            return;
-        }
-
-
-        try (Connection connection = MySQLConnection.getConnection()) {
-            String query = "CREATE TABLE IF NOT EXISTS users (" +
-                    "id INT AUTO_INCREMENT PRIMARY KEY," +
-                    "name VARCHAR(50) NOT NULL," +
-                    "password VARCHAR(100) NOT NULL," +
-                    "email VARCHAR(100) NOT NULL)";
-            try (Statement statement = connection.createStatement()) {
-                statement.execute(query);
-            }
-
-            String insertUserQuery = "INSERT INTO users (name, password, email) VALUES (?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(insertUserQuery)) {
-                statement.setString(1, username);
-                statement.setString(2, password);
-                statement.setString(3, email);
-                int rows = statement.executeUpdate();
-
-//                if (rows > 0) {
-//                    registerStatus.setText("Registration successful.");
-//                } else {
-//                    registerStatus.setText("Registration failed.");
-//                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void signup(ActionEvent event) {
+    @FXML
+    void signup(ActionEvent event) {
+        Parent root = null;
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e){
-            e.printStackTrace();
+            root = FXMLLoader.load(getClass().getResource("register-view.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        Scene registerScene = new Scene(root);
 
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setResizable(false);
+        window.setScene(registerScene);
+        window.show();
     }
 
 
-//    public void Signup(MouseEvent mouseEvent) {
-//        switchScene (mouseEvent,"register-vew.fxml");
-//    }
 }

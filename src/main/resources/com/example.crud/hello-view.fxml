@@ -12,7 +12,7 @@
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
    <children>
-      <Button id="btnLogin" layoutX="327.0" layoutY="204.0" mnemonicParsing="false" onAction="#onLogin" text="Login" />
+      <Button id="btnLogin" fx:id="btnLogin" layoutX="327.0" layoutY="204.0" mnemonicParsing="false" onAction="#onLogin" text="Login" />
       <TextField id="tfUsername" fx:id="username" layoutX="224.0" layoutY="116.0" />
       <TextField id="tfPass" fx:id="password" layoutX="224.0" layoutY="166.0" />
       <Text layoutX="153.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username: " />
@@ -22,7 +22,7 @@
             <Font size="10.0" />
          </font>
       </Text>
-      <Button layoutX="153.0" layoutY="283.0" mnemonicParsing="false" onAction="#signup" text="Sign Up" />
+      <Button fx:id="btnSignUp" layoutX="153.0" layoutY="283.0" mnemonicParsing="false" onAction="#signup" text="Sign Up" />
    </children>
 
 </AnchorPane>
