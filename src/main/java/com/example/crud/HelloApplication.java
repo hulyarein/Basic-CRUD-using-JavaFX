@@ -33,6 +33,7 @@ public class HelloApplication extends Application {
                     " writtenDate DATE NOT NULL," +
                      "FOREIGN KEY(username) REFERENCES tblUser(name))";
             s.execute(notes);
+            System.out.println("try daw");
         } catch (Exception e) {
             e.printStackTrace();
         }
