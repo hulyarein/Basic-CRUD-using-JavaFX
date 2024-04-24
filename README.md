@@ -15,6 +15,6 @@ Welcome to Girl Journal, a simple CRUD (Create, Read, Update, Delete) applicatio
 - Click entry to view details.
 - Update or delete entries as needed.
 
-### Main Dashboard
+### Log Out
 - Click "Log Out" to exit your account.
   
