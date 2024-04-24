@@ -13,8 +13,8 @@
     </padding>
    <children>
       <Button id="btnLogin" fx:id="btnLogin" layoutX="327.0" layoutY="204.0" mnemonicParsing="false" onAction="#onLogin" text="Login" />
-      <TextField id="tfUsername" fx:id="username" layoutX="224.0" layoutY="116.0" />
-      <TextField id="tfPass" fx:id="password" layoutX="224.0" layoutY="166.0" />
+      <TextField id="tfUsername" fx:id="txtusername" layoutX="224.0" layoutY="116.0" />
+      <TextField id="tfPass" fx:id="txtpassword" layoutX="224.0" layoutY="166.0" />
       <Text layoutX="153.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username: " />
       <Text layoutX="156.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
       <Text layoutX="153.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">

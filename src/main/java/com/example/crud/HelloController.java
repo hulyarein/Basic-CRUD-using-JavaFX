@@ -26,10 +26,10 @@ public class HelloController {
     private Button btnSignUp;
 
     @FXML
-    private TextField txtpassword;
+    private TextField txtusername;
 
     @FXML
-    private TextField txtusername;
+    private TextField txtpassword;
 
     public static User user;
 
@@ -49,8 +49,6 @@ public class HelloController {
                 int id = s.getResultSet().getInt("userId");
                 String name = s.getResultSet().getString("name");
                 user = new User(id, name);
-
-
 
                 Parent root = FXMLLoader.load(getClass().getResource("logged.fxml"));
                 Scene homepageScene = new Scene(root);

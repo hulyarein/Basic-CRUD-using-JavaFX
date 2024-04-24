@@ -29,6 +29,7 @@ public class HelloApplication extends Application {
 
             var notes = "CREATE TABLE IF NOT EXISTS tblNote (" +
                     "noteID INTEGER PRIMARY KEY AUTO_INCREMENT," +
+                    "noteTitle VARCHAR(256) NOT NULL," +
                      "notetext TEXT NOT NULL," + "username VARCHAR(256) NOT NULL," +
                     " writtenDate DATE NOT NULL," +
                      "FOREIGN KEY(username) REFERENCES tblUser(name))";

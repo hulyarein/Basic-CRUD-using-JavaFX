@@ -8,13 +8,15 @@ public class Note {
     private final int id;
     private String note;
     private final String username;
+    private String title;
     private final Date writtenDate;
 
-    public Note(int id, String note, String username, Date writtenDate) {
+    public Note(int id, String note, String username, String title, Date writtenDate) {
         this.id = id;
         this.note = note;
         this.username = username;
         this.writtenDate = writtenDate;
+        this.title = title;
     }
 
     public static void setIdGenerator(int idGenerator) {
@@ -27,6 +29,13 @@ public class Note {
 
     public void setNote(String note) {
         this.note = note;
+    }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String note) {
+        this.title = note;
     }
 
     public String getUsername() {
