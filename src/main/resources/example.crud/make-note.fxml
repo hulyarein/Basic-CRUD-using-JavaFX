@@ -12,7 +12,7 @@
     <children>
         <VBox alignment="CENTER" prefHeight="400.0" prefWidth="193.0" spacing="20.0" style="-fx-background-color: #FFC0CB;">
             <children>
-                <Button fx:id="btnMakeNote" mnemonicParsing="false" onAction="#MakeNote" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #912222;" text="Make note" textFill="WHITE">
+                <Button fx:id="btnMakeNote" mnemonicParsing="false" onAction="#MakeNote" prefHeight="26.0" prefWidth="142.0" style="-fx-background-color: #912222;" text="Make entry" textFill="WHITE">
                     <VBox.margin>
                         <Insets top="70.0" />
                     </VBox.margin></Button>
